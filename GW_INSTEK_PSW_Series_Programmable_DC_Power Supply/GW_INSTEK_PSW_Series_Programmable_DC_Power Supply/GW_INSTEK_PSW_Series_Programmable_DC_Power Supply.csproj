@@ -81,6 +81,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="doc\cmd_example.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Clear48.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
