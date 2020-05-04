@@ -1,4 +1,4 @@
-PSW 30-109 programmable DC PSU
+PSW 30-109 programmable DC PSU, GW Instek
 
 "*IDN?\r\n"
 
