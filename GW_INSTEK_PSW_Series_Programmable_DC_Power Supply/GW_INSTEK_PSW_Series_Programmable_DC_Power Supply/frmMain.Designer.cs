@@ -65,6 +65,7 @@
             this.rdAPPLy = new System.Windows.Forms.RadioButton();
             this.rdAbort = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cboBaudRate = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -94,7 +95,8 @@
             this.toolStripSeparator2,
             this.tsBtnClearTxt,
             this.tsBtnExit,
-            this.toolStripSeparator3});
+            this.toolStripSeparator3,
+            this.cboBaudRate});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1258, 57);
@@ -451,6 +453,11 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // cboBaudRate
+            // 
+            this.cboBaudRate.Name = "cboBaudRate";
+            this.cboBaudRate.Size = new System.Drawing.Size(121, 57);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -518,6 +525,7 @@
         private System.Windows.Forms.ListBox lst2rdStr;
         private System.Windows.Forms.Label lblinfo;
         private System.Windows.Forms.TextBox txtMsg;
+        private System.Windows.Forms.ToolStripComboBox cboBaudRate;
     }
 }
 

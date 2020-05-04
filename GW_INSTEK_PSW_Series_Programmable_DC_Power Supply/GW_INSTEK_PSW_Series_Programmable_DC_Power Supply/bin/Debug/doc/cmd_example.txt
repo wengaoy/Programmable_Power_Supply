@@ -1,0 +1,296 @@
+PSW 30-109 programmable DC PSU, GW Instek, wengao 5/4/2020
+
+"*IDN?\r\n"
+
+*****Abort Command*****
+The ABORt command will cancel any triggered
+actions.
+
+*****APPLy Command*****
+Set Voltage and Current
+1. APPLy? //get current voltage and current setting
+2. DISPlay:MENU:NAME 3 //get current voltage and current setting and display on LED 
+3. APPLy {<voltage>|MIN|MAX}[,{<current>|MIN|MAX}]
+   ex: APPLy 21,1.5	//set to 21V, 1.5A
+
+
+*****Display Command*****
+
+DISP:MENU:NAME 0 (0,1,2,3,4)
+
+DISPlay:WINDow:TEXT:DATA?
+DISPlay:WINDow:TEXT:DATA "TEst"
+DISPlay:WINDow:TEXT:CLEar
+DISPlay:BLINk?
+DISPlay:BLINk OFF, ON //0,1
+
+*****Initiate Commands*****
+//The INITiate command starts the TRANsient or
+//OUTPut trigger.
+//See the trigger commands on page 75 for usage
+//details
+
+
+*****Measure Commands*****
+MEASure:SCALar:CURRent:DC
+MEASure:SCALar:VOLTage:DC
+MEASure:SCALar:POWer:DC
+
+
+*****Output Command*****
+
+OUTPut:DELay:ON 2	//set & Query 0.00~99.99 seconds, where 0=no delay
+OUTPut:DELay:ON?
+OUTPut:DELay:OFF
+OUTPut:DELay:OFF?
+
+OUTPut:MODE? 
+OUTPut:MODE |CVHS|CCHS|CVLS|CCLS // 0,1,2,3
+example: OUTPut:MODE CVHS or OUTPut:MODE 0
+
+OUTPut:STATe:IMMediate? // set & Query
+OUTPut:STATe:IMMediate 1 //on
+OUTPut:STATe:IMMediate 0 //off
+
+//Description Turns the output on or off when a software trigger
+//is generated.
+OUTPut:STATe:TRIGgered? //set & Query
+OUTPut:STATe:TRIGgered { OFF | ON | 0 | 1 }
+
+//Description Clears over-voltage, over-current and overtemperature (OVP, OCP, OTP) protection circuits.
+//It also clears the shutdown protection circuit. The
+//AC failure protection cannot be cleared.
+OUTPut:PROTection:CLEar //set
+
+OUTPut:PROTection:TRIPped?//Query
+
+*****Sense Commands*****
+
+SENSe:AVERage:COUNt 0,1,2 //0 is Low Level of smoothing, 1 is Middle Level of smoothing, 2 is High Level of smoothing
+
+*****Status Commands*****
+
+STATus:OPERation:EVENt?//Query only, Returns the bit sum of the Operation Status Event register.
+//Queries the Operation Status Event register and clears the contents of the register.
+
+STATus:OPERation:CONDition?
+//Returns the bit sum of the Operation Condition register.
+//Queries the Operation Status register. This query
+//will not clear the register.
+
+STATus:OPERation:ENABle //set and query
+//Sets or queries the bit sum of the Operation Status Enable register.
+example: TATus:OPERation:ENABle 1234 (0~32767)
+
+STATus:OPERation:PTRansition//set and query
+//Sets or queries the bit sum of the positive transition filter of the Operation Status register.
+STATus:OPERation:PTRansition?
+STATus:OPERation:PTRansition 1234(0~32767)
+
+STATus:OPERation:NTRansition
+STATus:OPERation:NTRansition?
+STATus:OPERation:NTRansition 1234(0~32767)
+
+STATus:QUEStionable:EVENt? //query and also clear the register
+//Queries the bit sum of the Questionable Status
+//Event register. This query will also clear the
+//contents of the register.
+
+STATus:QUEStionable:CONDition?// Query and not clear
+
+STATus:QUEStionable:ENABle //set and query
+STATus:QUEStionable:ENABle?
+STATus:QUEStionable:ENABle 1234 (0~32767)
+
+STATus:QUEStionable:PTRansition//set and query
+same as above
+
+STATus:QUEStionable:NTRansition//set and query
+same as above
+
+STATus:PRESet //set only
+//This command resets the ENABle register, the
+//PTRansistion filter and NTRansistion filter on the
+//Operation Status and Questionable Status
+//Registers. The registers/filters will be reset to a
+
+STATus:PRESet
+
+//default value.
+//QUEStionable Status Enable 0x0000
+//QUEStionable Status Positive Transition 0x7FFF
+//QUEStionable Status Negative Transition 0x0000
+//Operation Status Enable 0x0000
+//Operation Status Positive Transition 0x7FFF
+//OperationStatus Negative Transition 0x0000
+
+
+*****Source Commands*****
+
+//Sets or queries the current level in amps.For
+//externally set current levels (from the analog
+//control connector) the set current level is returned
+1
+SOUR:CURR:LEV:IMM:AMPL? MAX //113.4 is max, query max
+SOUR:CURR:LEV:IMM:AMPL?//query current setting
+SOUR:CURR:LEV:IMM:AMPL 90 //set to 90A
+
+
+//Sets or queries the current level in amps when a
+//software trigger has been generated.
+2
+SOUR:CURR:LEV:TRIG:AMPL? MAX
+SOUR:CURR:LEV:TRIG:AMPL?//query current
+SOUR:CURR:LEV:TRIG:AMPL 80//set to 80, 113.4 is max
+
+//Sets or queries the OCP (over-current protection)
+//level in amps.
+[SOURce:]CURRent:PROTection[:LEVel]//set and query
+3
+SOUR:CURR:PROT:LEV? MIN
+SOUR:CURR:PROT:LEV 22 //set in range of MIN~MAX, 21~118
+
+//Sets or queries the rising current slew rate. This is
+//only applicable for CC slew rate priority mode.
+[SOURce:]CURRent:SLEW:RISing {<NRf>|MIN|MAX}
+4
+SOUR:CURR:SLEW:RIS? //for PSW30-108 the range is 0.01A~216.0A
+SOUR:CURR:SLEW:RIS 200//set
+
+
+//Sets or queries the falling current slew rate. This is
+//only applicable for CC slew rate priority mode.
+[SOURce:]CURRent:SLEW:FALLing {<NRf>|MIN|MAX}
+5
+SOUR:CURR:SLEW:FALL? //for PSW30-108 the range is 0.01A~216.0A
+SOUR:CURR:SLEW:FALL 110 //set
+
+
+//Sets or queries the internal resistance in ohms.
+[SOURce:]RESistance[:LEVel][:IMMediate][:AMPLitude]{<NRf>|MIN|DEF|MAX|?}
+6
+SOUR:RES:LEV:IMM:AMPL? //0.000Ω~0.278Ω (PSW 30-108)
+SOUR:RES:LEV:IMM:AMPL 0.1 //set to 100 mohms
+
+//Sets or queries the voltage level in volts.
+[SOURce:]VOLTage[:LEVel][:IMMediate][:AMPLitude]
+7
+SOUR:VOLT:LEV:IMM:AMPL? MAX//query current, min, max
+SOUR:VOLT:LEV:IMM:AMPL 24 //set to 24V
+
+//Sets or queries the voltage level in volts when a
+//software trigger has been generated.
+[SOURce:]VOLTage[:LEVel]:TRIGgered[:AMPLitude]{<NRf>|MIN|MAX}
+8
+SOUR:VOLT:LEV:TRIG:AMPL? //query
+SOUR:VOLT:LEV:TRIG:AMPL 0//set 0~31.5
+
+
+//Sets or queries the overvoltage protection level
+[SOURce:]VOLTage:PROTection[:LEVel]{<NRf>|MIN|MAX}
+9
+SOUR:VOLT:PROT:LEV?//query
+SOUR:VOLT:PROT:LEV 26 //set to 26V OVP
+
+//Sets or queries the rising voltage slew rate. This is
+//only applicable for CV slew rate priority mode.
+[SOURce:]VOLTage:SLEW:RISing {<NRf>|MIN|MAX}
+10
+SOUR:VOLT:SLEW:RIS? //0.01V/s~60.00V/s (PSW 30-XX)
+SOUR:VOLT:SLEW:RIS 55 //set to 55V/s
+
+//Sets or queries the falling voltage slew rate. This is
+//only applicable for CV slew rate priority mode.
+[SOURce:]VOLTage:SLEW:FALLing {<NRf>|MIN|MAX}
+11
+SOUR:VOLT:SLEW:FALL?//0.01V/s~60.00V/s (PSW 30-XX)
+SOUR:VOLT:SLEW:FALL MIN //set to 0.01V/s
+
+
+*****Trigger Commands*****
+
+//Generates a software trigger for the transient
+//trigger system. On a trigger, sets the voltage &
+//current. Refer to the :CURR:TRIG and VOLT:TRIG
+//commands on page 69 and 73, respectively.
+TRIGger:TRANsient[:IMMediate]
+1
+ex:TRIGger:TRANsient:IMMediate
+Related Commands
+[SOURce:]CURRent[:LEVel]:TRIGgered[:AMPLitude]
+[SOURce:]VOLTage[:LEVel]:TRIGgered[:AMPLitude]
+
+
+//Sets or queries the trigger source for the transient system.
+TRIGger:TRANsient:SOURce
+2
+TRIGger:TRANsient:SOURce {BUS | IMMediate}
+TRIGger:TRANsient:SOURce? //IMM or BUS
+
+ex:TRIG:TRAN:SOUR IMM
+
+//Generates a software trigger for the output trigger
+//system. On a trigger, sets the output state. Refer to
+//the :OUTP:TRIG command on page 61.
+TRIGger:OUTPut[:IMMediate] //set only
+3
+ex:TRIGger:OUTPut:IMMediate
+Related commands
+OUTPut[:STATe]:TRIGgered 
+
+//Sets or queries the trigger source for the output system
+TRIGger:OUTPut:SOURce [BUS | IMMediate]
+4
+ex:TRIG:OUTP:SOUR BUS //or IMM
+
+
+******System Function Command*****
+SYSTem:BEEPer[:IMMediate]............................................79
+SYSTem:CONFigure:BEEPer[:STATe].............................79
+
+SYSTem:CONFigure:BTRip[:IMMediate].........................80
+SYSTem:CONFigure:BTRip:PROTection ........................80
+SYSTem:CONFigure:CURRent:CONTrol........................81
+SYSTem:CONFigure:BLEeder[:STATe] ...........................80
+SYSTem:CONFigure:VOLTage:CONTrol .......................81
+SYSTem:CONFigure:MSLave.............................................82
+SYSTem:CONFigure:OUTPut:EXTernal[:MODE] ........82
+SYSTem:CONFigure:OUTPut:PON[:STATe] .................82
+SYSTem:COMMunicate:ENABle.......................................83
+SYSTem:COMMunicate:GPIB[:SELF]:ADDRess...........84
+SYSTem:COMMunicate:LAN:IPADdress ........................84
+SYSTem:COMMunicate:LAN:GATEway.........................84
+SYSTem:COMMunicate:LAN:SMASk...............................85
+SYSTem:COMMunicate:LAN:MAC ..................................85
+SYSTem:COMMunicate:LAN:DHCP................................85
+SYSTem:COMMunicate:LAN:DNS...................................86
+SYSTem:COMMunicate:LAN:HOSTname.......................86
+SYSTem:COMMunicate:LAN:WEB:PACTive.................86
+SYSTem:COMMunicate:LAN:WEB:PASSword...................87
+SYSTem:COMMunicate:USB:FRONt:STATe..................87
+SYSTem:COMMunicate:USB:REAR:STATe....................87
+SYSTem:COMMunicate:USB:REAR:MODE...................87
+SYSTem:ERRor.....................................................................88
+SYSTem:KEYLock:MODE.................................................88
+SYSTem:KLOCk...................................................................88
+SYSTem:INFormation..........................................................89
+SYSTem:PRESet....................................................................89
+SYSTem:VERSion.................................................................89
+total 30
+
+*****IEEE 488.2 Common Commands*****
+
+*CLS ........................................................................................90
+*ESE........................................................................................90
+*ESR........................................................................................90
+*IDN .......................................................................................91
+*OPC.......................................................................................91
+*RST........................................................................................91
+*SRE........................................................................................92
+*STB........................................................................................92
+*TRG.......................................................................................92
+*TST........................................................................................92
+*WAI .......................................................................................93
+
+
+
