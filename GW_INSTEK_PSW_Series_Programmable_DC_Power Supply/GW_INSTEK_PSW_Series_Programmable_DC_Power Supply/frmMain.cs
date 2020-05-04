@@ -1041,6 +1041,9 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 //SerialPortSelectIndex = Properties.Settings.Default.SerialPort_Sel_Idx;
                 //cbCOM.SelectedIndex = SerialPortSelectIndex;
             }
+
+            cboBaudRate.SelectedIndex = 9;
+
         }
     }
 }

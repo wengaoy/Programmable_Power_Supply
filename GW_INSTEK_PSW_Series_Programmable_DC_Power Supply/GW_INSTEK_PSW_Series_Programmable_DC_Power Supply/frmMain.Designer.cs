@@ -455,6 +455,21 @@
             // 
             // cboBaudRate
             // 
+            this.cboBaudRate.Items.AddRange(new object[] {
+            "2400",
+            "4800",
+            "9600",
+            "14400",
+            "19200",
+            "28800",
+            "38400",
+            "57600",
+            "76800",
+            "115200",
+            "230400",
+            "250000",
+            "500000",
+            "1000000"});
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(121, 57);
             // 
