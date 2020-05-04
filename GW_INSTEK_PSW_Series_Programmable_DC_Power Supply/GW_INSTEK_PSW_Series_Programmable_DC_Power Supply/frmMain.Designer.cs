@@ -91,12 +91,12 @@
             this.toolStripLabel1,
             this.cbCOM,
             this.toolStripSeparator1,
+            this.cboBaudRate,
+            this.toolStripSeparator3,
             this.tsbtnOpenPort,
             this.toolStripSeparator2,
             this.tsBtnClearTxt,
-            this.tsBtnExit,
-            this.toolStripSeparator3,
-            this.cboBaudRate});
+            this.tsBtnExit});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1258, 57);
