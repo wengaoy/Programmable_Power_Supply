@@ -123,6 +123,26 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PowerOFF80 {
+            get {
+                object obj = ResourceManager.GetObject("PowerOFF80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PowerON80 {
+            get {
+                object obj = ResourceManager.GetObject("PowerON80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PwrOFF48 {
             get {
                 object obj = ResourceManager.GetObject("PwrOFF48", resourceCulture);
@@ -136,6 +156,26 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
         internal static System.Drawing.Bitmap PwrON48 {
             get {
                 object obj = ResourceManager.GetObject("PwrON48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toggleOff80 {
+            get {
+                object obj = ResourceManager.GetObject("toggleOff80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap toggleOn80 {
+            get {
+                object obj = ResourceManager.GetObject("toggleOn80", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

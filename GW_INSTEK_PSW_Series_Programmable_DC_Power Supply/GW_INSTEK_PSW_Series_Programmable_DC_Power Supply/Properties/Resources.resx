@@ -136,10 +136,22 @@
   <data name="icons8lightningbolt481" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8lightningbolt48.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PowerOFF80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PowerOFF80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PowerON80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PowerON80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="PwrOFF48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PwrOFF48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PwrON48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PwrON48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toggleOff80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\toggleOff80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="toggleOn80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\toggleOn80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

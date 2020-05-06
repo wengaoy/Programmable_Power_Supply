@@ -93,6 +93,12 @@
     <Content Include="Resources\icons8lightningbolt48.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\toggleOn80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\toggleOff80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\icons8lightningbolt48.png" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +112,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\PowerOFF80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\PowerON80.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\PwrOFF48.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

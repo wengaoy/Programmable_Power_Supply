@@ -20,6 +20,13 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             InitializeComponent();
         }
 
+        private bool PowerONF = false;//power ON/OFF flag
+        private double OVP_voltage;//CV
+        private double VoltageOut;
+        private double OCP_current;
+        private double CurrentOut; //CC
+        private double PowerON_delay;
+        private double PowerOFF_delay;
 
 
         #region serial port
@@ -1017,6 +1024,175 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             }
         }
 
+        private void btnPowerOut_Click(object sender, EventArgs e)
+        {
+            string msg = "*IDN?\r\n";
+            if (portOpened)
+            {
+                COMmsgToWrite.Add(msg);
+            }
+            else
+            {
+                MessageBox.Show("Port not opened!");
+                return;
+            }
+            txtinfo.AppendText("\r\n");
+
+
+            OVP_voltage = Convert.ToDouble(txtOVP.Text);
+            VoltageOut = Convert.ToDouble(txtVoltageLevel.Text);
+            OCP_current = Convert.ToDouble(txtOCP.Text);
+            CurrentOut = Convert.ToDouble(txtCurrentLevel.Text);
+            PowerON_delay = Convert.ToDouble(txtPowerON_Delay.Text);
+            PowerOFF_delay = Convert.ToDouble(txtPowerOFF_Delay.Text);
+
+            txtinfo.AppendText("OVP: " + OVP_voltage.ToString() +
+                ", VoltageOut: " + VoltageOut.ToString() + ", OCP_current: " + OCP_current.ToString()
+                + ", CurrentOut: " + CurrentOut.ToString() + ", PowerON Delay: " + PowerON_delay.ToString()
+                + ", PowerOFF delay: " + PowerOFF_delay.ToString() + "\r\n");
+
+            if (PowerONF)
+            {
+                //turn off
+                COMmsgToWrite.Add("OUTPut:STATe:IMMediate 0\r\n");//power on
+                btnPowerOut.Image = Properties.Resources.PowerOFF80;
+                PowerONF = false;
+            }
+            else//Turn ON
+            {
+                COMmsgToWrite.Add("OUTPut:STATe:IMMediate 1\r\n");//power on
+
+
+                btnPowerOut.Image = Properties.Resources.PowerON80;
+                PowerONF = true;
+            }
+
+          
+        }
+
+        private void txtOVP_TextChanged(object sender, EventArgs e)
+        {
+           
+            OVP_voltage =Convert.ToDouble(txtOVP.Text);
+        }
+
+        private void txtVoltageLevel_TextChanged(object sender, EventArgs e)
+        {
+            VoltageOut = Convert.ToDouble(txtVoltageLevel.Text);
+        }
+
+        private void txtOCP_TextChanged(object sender, EventArgs e)
+        {
+            OCP_current = Convert.ToDouble(txtOCP.Text);
+        }
+
+        private void txtCurrentLevel_TextChanged(object sender, EventArgs e)
+        {
+            CurrentOut = Convert.ToDouble(txtCurrentLevel.Text);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            PowerON_delay = Convert.ToDouble(txtPowerON_Delay.Text);
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            PowerOFF_delay = Convert.ToDouble(txtPowerOFF_Delay.Text);
+        }
+
+
+        private void txtOVP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if(ch==46 && txtOVP.Text.IndexOf('.') !=-1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch !=8 && ch!=46)
+            {
+                e.Handled = true;               
+            }
+        }
+
+        private void txtVoltageLevel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtVoltageLevel.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtOCP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtOCP.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCurrentLevel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtCurrentLevel.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPowerON_Delay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtPowerON_Delay.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPowerOFF_Delay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && txtPowerOFF_Delay.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //for COM port
@@ -1044,6 +1220,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
 
             cboBaudRate.SelectedIndex = 9;
 
+           
         }
     }
 }
