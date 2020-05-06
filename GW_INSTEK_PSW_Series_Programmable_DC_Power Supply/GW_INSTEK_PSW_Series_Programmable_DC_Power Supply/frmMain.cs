@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-
+using System.Diagnostics;
 
 namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
 {
@@ -28,7 +28,8 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
         private double PowerON_delay;
         private double PowerOFF_delay;
 
-
+        private bool txtinfoBoxF;//for txtinfo box show/hide
+      
         #region serial port
         SerialPort mySerialPort = new SerialPort();
 
@@ -234,6 +235,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
         }
         int bytesCount = 0;
         private StringBuilder myStringbuilder = new StringBuilder();
+        private StringBuilder mCaptureSB = new StringBuilder();
         private void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
             try
@@ -242,14 +244,20 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 myStringbuilder.Append(mySerialPort.ReadExisting());
                 // buffer += mySerialPort.ReadExisting();
 
+                mCaptureSB.Append(myStringbuilder.ToString()+"|");//copy to another stingbuilder for show PSU status
 
                 myStringbuilder = myStringbuilder.Replace("\r", "\r\n");
                 //if (captureF)
                 //{
                 //    mCaptureSB.Append(myStringbuilder.ToString());//copy to another stingbuilder for saving to  txt file
                 //}
+              
 
-                SetText(myStringbuilder.ToString());
+                if(txtinfoBoxF)
+                {
+                    SetText(myStringbuilder.ToString());
+                }
+              
                 myStringbuilder.Length = 0;
                 myStringbuilder.Capacity = 0;         
             }
@@ -918,7 +926,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 lst1stStr.Items.Add("SOUR:VOLT:LEV:TRIG:AMPL?");
                 lst1stStr.Items.Add("SOUR:VOLT:LEV:TRIG:AMPL");
 
-                lst1stStr.Items.Add("SOUR:VOLT:PROT:LEV?");
+                lst1stStr.Items.Add("SOUR:VOLT:PROT:LEV?");//OVP
                 lst1stStr.Items.Add("SOUR:VOLT:PROT:LEV");
 
                 lst1stStr.Items.Add("SOUR:VOLT:SLEW:RIS?");
@@ -1026,19 +1034,13 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
 
         private void btnPowerOut_Click(object sender, EventArgs e)
         {
-            string msg = "*IDN?\r\n";
-            if (portOpened)
-            {
-                COMmsgToWrite.Add(msg);
-            }
-            else
+           
+            if (!portOpened)
             {
                 MessageBox.Show("Port not opened!");
                 return;
             }
-            txtinfo.AppendText("\r\n");
-
-
+           
             OVP_voltage = Convert.ToDouble(txtOVP.Text);
             VoltageOut = Convert.ToDouble(txtVoltageLevel.Text);
             OCP_current = Convert.ToDouble(txtOCP.Text);
@@ -1054,17 +1056,38 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             if (PowerONF)
             {
                 //turn off
+                //set power off delay
+                COMmsgToWrite.Add("OUTPut:DELay:OFF " + PowerOFF_delay.ToString() + "\r\n");//power off delay time
                 COMmsgToWrite.Add("OUTPut:STATe:IMMediate 0\r\n");//power on
                 btnPowerOut.Image = Properties.Resources.PowerOFF80;
                 PowerONF = false;
+                txtinfo.Clear();
+                txtinfo.AppendText("Power Off!\r\n");
+
+                tmrStatus.Stop();
             }
             else//Turn ON
             {
+               //1. set OVP, OCP, both output voltage and current
+                COMmsgToWrite.Add("*IDN?\r\n");//query product info
+                COMmsgToWrite.Add("SOUR:VOLT:PROT:LEV "+ OVP_voltage.ToString()+"\r\n");//set OVP
+                COMmsgToWrite.Add("APPly " + VoltageOut.ToString() +","+ CurrentOut.ToString()+"\r\n");//set Output Voltage, and Current
+                COMmsgToWrite.Add("SOUR:CURR:PROT:LEV " + OCP_current.ToString()+"\r\n");//set OCP
+
+                //2. set Power ON/OFF delay time
+                COMmsgToWrite.Add("OUTPut:DELay:ON "+PowerON_delay.ToString() +"\r\n");//power on delay time
+                //COMmsgToWrite.Add("OUTPut:DELay:OFF " + PowerOFF_delay.ToString() + "\r\n");//power off delay time
+
                 COMmsgToWrite.Add("OUTPut:STATe:IMMediate 1\r\n");//power on
-
-
                 btnPowerOut.Image = Properties.Resources.PowerON80;
                 PowerONF = true;
+
+                tmrStatus.Start();//reading PSU status
+                Thread.Sleep(500);//tested 50ms will do the clear, but delay 500ms here
+                mCaptureSB.Clear();
+
+                txtinfoBoxF = false;//hiding incoming COM msg, let tmrStatus takeover
+
             }
 
           
@@ -1193,6 +1216,39 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             }
         }
 
+        private void tmrStatus_Tick(object sender, EventArgs e)
+        {
+            COMmsgToWrite.Add("MEASure:SCALar:VOLTage:DC?\r\n");
+            COMmsgToWrite.Add("MEASure:SCALar:CURRent:DC?\r\n");
+           
+            Thread.Sleep(100);
+           
+            String[] spearator = {"|"};
+            String[] StatusList = mCaptureSB.ToString().Split(spearator, 2, StringSplitOptions.RemoveEmptyEntries);
+
+            txtReadVolOut.Text = StatusList[0];//for actual Voltage output
+
+            char[] charsToTrim = {'|'};                 
+            txtReadCurOut.Text = StatusList[1].Trim(charsToTrim);//for actual Current output
+              
+            Debug.WriteLine(mCaptureSB.Length);
+            mCaptureSB.Clear();
+        }
+
+        private void tsbtnTxtinfo_En_Dis_Click(object sender, EventArgs e)
+        {
+            if(txtinfoBoxF)//toggle show and hide txtinfo box text, true is use txtinfo
+            {
+                txtinfoBoxF = false;
+                tsbtnTxtinfo_En_Dis.Image = Properties.Resources.informatics48off;
+            }
+            else
+            {
+                txtinfoBoxF = true;
+                tsbtnTxtinfo_En_Dis.Image = Properties.Resources.informatics48on;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             //for COM port
@@ -1219,6 +1275,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             }
 
             cboBaudRate.SelectedIndex = 9;
+            txtinfoBoxF = true; //use txtinfo box show incoming COM port message
 
            
         }

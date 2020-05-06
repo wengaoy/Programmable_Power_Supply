@@ -93,6 +93,15 @@
     <Content Include="Resources\icons8lightningbolt48.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\informatics48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\informatics48off.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\informatics48on.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\toggleOn80.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

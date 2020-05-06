@@ -123,6 +123,36 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap informatics48 {
+            get {
+                object obj = ResourceManager.GetObject("informatics48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap informatics48off {
+            get {
+                object obj = ResourceManager.GetObject("informatics48off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap informatics48on {
+            get {
+                object obj = ResourceManager.GetObject("informatics48on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PowerOFF80 {
             get {
                 object obj = ResourceManager.GetObject("PowerOFF80", resourceCulture);

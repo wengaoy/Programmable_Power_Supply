@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnSendMixedMsg = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -40,31 +41,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnClearTxt = new System.Windows.Forms.ToolStripButton();
             this.tsBtnExit = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnTxtinfo_En_Dis = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblPort = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtinfo = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblinfo = new System.Windows.Forms.Label();
-            this.txtMsg = new System.Windows.Forms.TextBox();
-            this.lst2rdStr = new System.Windows.Forms.ListBox();
-            this.lst1stStr = new System.Windows.Forms.ListBox();
-            this.txtCmd = new System.Windows.Forms.TextBox();
-            this.btnSendCMD = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdUnSel = new System.Windows.Forms.RadioButton();
-            this.rdIEEEcommonCmd = new System.Windows.Forms.RadioButton();
-            this.rdSystemFunctionCmd = new System.Windows.Forms.RadioButton();
-            this.rdTRIGger = new System.Windows.Forms.RadioButton();
-            this.rdSOURce = new System.Windows.Forms.RadioButton();
-            this.rdSTATus = new System.Windows.Forms.RadioButton();
-            this.rdSENSe = new System.Windows.Forms.RadioButton();
-            this.rdOUTPut = new System.Windows.Forms.RadioButton();
-            this.rdMEASure = new System.Windows.Forms.RadioButton();
-            this.rdINITiate = new System.Windows.Forms.RadioButton();
-            this.rdDISPlay = new System.Windows.Forms.RadioButton();
-            this.rdAPPLy = new System.Windows.Forms.RadioButton();
-            this.rdAbort = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -72,8 +54,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtReadCurOut = new System.Windows.Forms.TextBox();
+            this.txtReadVolOut = new System.Windows.Forms.TextBox();
             this.btnPowerOut = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -96,16 +78,38 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtVoltageLevel = new System.Windows.Forms.TextBox();
             this.txtOVP = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblinfo = new System.Windows.Forms.Label();
+            this.txtMsg = new System.Windows.Forms.TextBox();
+            this.lst2rdStr = new System.Windows.Forms.ListBox();
+            this.lst1stStr = new System.Windows.Forms.ListBox();
+            this.txtCmd = new System.Windows.Forms.TextBox();
+            this.btnSendCMD = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdUnSel = new System.Windows.Forms.RadioButton();
+            this.rdIEEEcommonCmd = new System.Windows.Forms.RadioButton();
+            this.rdSystemFunctionCmd = new System.Windows.Forms.RadioButton();
+            this.rdTRIGger = new System.Windows.Forms.RadioButton();
+            this.rdSOURce = new System.Windows.Forms.RadioButton();
+            this.rdSTATus = new System.Windows.Forms.RadioButton();
+            this.rdSENSe = new System.Windows.Forms.RadioButton();
+            this.rdOUTPut = new System.Windows.Forms.RadioButton();
+            this.rdMEASure = new System.Windows.Forms.RadioButton();
+            this.rdINITiate = new System.Windows.Forms.RadioButton();
+            this.rdDISPlay = new System.Windows.Forms.RadioButton();
+            this.rdAPPLy = new System.Windows.Forms.RadioButton();
+            this.rdAbort = new System.Windows.Forms.RadioButton();
+            this.tmrStatus = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSendMixedMsg
@@ -131,7 +135,9 @@
             this.tsbtnOpenPort,
             this.toolStripSeparator2,
             this.tsBtnClearTxt,
-            this.tsBtnExit});
+            this.tsBtnExit,
+            this.tsbtnTxtinfo_En_Dis,
+            this.toolStripSeparator4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1258, 57);
@@ -216,6 +222,22 @@
             this.tsBtnExit.Text = "Exit";
             this.tsBtnExit.Click += new System.EventHandler(this.tsBtnExit_Click);
             // 
+            // tsbtnTxtinfo_En_Dis
+            // 
+            this.tsbtnTxtinfo_En_Dis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnTxtinfo_En_Dis.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.informatics48on;
+            this.tsbtnTxtinfo_En_Dis.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbtnTxtinfo_En_Dis.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnTxtinfo_En_Dis.Name = "tsbtnTxtinfo_En_Dis";
+            this.tsbtnTxtinfo_En_Dis.Size = new System.Drawing.Size(52, 52);
+            this.tsbtnTxtinfo_En_Dis.Text = "Click to Disable/Enable txtinfo";
+            this.tsbtnTxtinfo_En_Dis.Click += new System.EventHandler(this.tsbtnTxtinfo_En_Dis_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 57);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -248,8 +270,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(0, 57);
@@ -257,6 +279,364 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1258, 637);
             this.tabControl1.TabIndex = 4;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Silver;
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.btnPowerOut);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1250, 604);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "PSW 30-180 GUI";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(1039, 225);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(166, 29);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Output Enable";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(133)))), ((int)(((byte)(255)))));
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.txtReadCurOut);
+            this.groupBox5.Controls.Add(this.txtReadVolOut);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(34, 290);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(532, 151);
+            this.groupBox5.TabIndex = 5;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Actual Output";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(470, 84);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 32);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "A";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(201, 84);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(35, 32);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "V";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(291, 38);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(92, 29);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Current";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(22, 41);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 29);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Voltage";
+            // 
+            // txtReadCurOut
+            // 
+            this.txtReadCurOut.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtReadCurOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReadCurOut.ForeColor = System.Drawing.Color.Lime;
+            this.txtReadCurOut.Location = new System.Drawing.Point(291, 76);
+            this.txtReadCurOut.Name = "txtReadCurOut";
+            this.txtReadCurOut.Size = new System.Drawing.Size(173, 48);
+            this.txtReadCurOut.TabIndex = 2;
+            this.txtReadCurOut.Text = "0.000";
+            // 
+            // txtReadVolOut
+            // 
+            this.txtReadVolOut.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtReadVolOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReadVolOut.ForeColor = System.Drawing.Color.Lime;
+            this.txtReadVolOut.Location = new System.Drawing.Point(22, 76);
+            this.txtReadVolOut.Name = "txtReadVolOut";
+            this.txtReadVolOut.Size = new System.Drawing.Size(173, 48);
+            this.txtReadVolOut.TabIndex = 0;
+            this.txtReadVolOut.Text = "0.000";
+            // 
+            // btnPowerOut
+            // 
+            this.btnPowerOut.AutoSize = true;
+            this.btnPowerOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnPowerOut.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.PowerOFF80;
+            this.btnPowerOut.Location = new System.Drawing.Point(1060, 91);
+            this.btnPowerOut.Name = "btnPowerOut";
+            this.btnPowerOut.Size = new System.Drawing.Size(129, 108);
+            this.btnPowerOut.TabIndex = 4;
+            this.btnPowerOut.UseVisualStyleBackColor = false;
+            this.btnPowerOut.Click += new System.EventHandler(this.btnPowerOut_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(145)))));
+            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.label12);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.txtPowerOFF_Delay);
+            this.groupBox4.Controls.Add(this.txtPowerON_Delay);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(572, 41);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(410, 243);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Power ON/OFF Delay (s)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(148, 184);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(118, 32);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Second";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(146, 84);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(118, 32);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Second";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(22, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(138, 29);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Power OFF";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(22, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(126, 29);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Power ON";
+            // 
+            // txtPowerOFF_Delay
+            // 
+            this.txtPowerOFF_Delay.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtPowerOFF_Delay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPowerOFF_Delay.ForeColor = System.Drawing.Color.Lime;
+            this.txtPowerOFF_Delay.Location = new System.Drawing.Point(22, 176);
+            this.txtPowerOFF_Delay.Name = "txtPowerOFF_Delay";
+            this.txtPowerOFF_Delay.Size = new System.Drawing.Size(120, 48);
+            this.txtPowerOFF_Delay.TabIndex = 2;
+            this.txtPowerOFF_Delay.Text = "0.00";
+            this.txtPowerOFF_Delay.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtPowerOFF_Delay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPowerOFF_Delay_KeyPress);
+            // 
+            // txtPowerON_Delay
+            // 
+            this.txtPowerON_Delay.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtPowerON_Delay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPowerON_Delay.ForeColor = System.Drawing.Color.Lime;
+            this.txtPowerON_Delay.Location = new System.Drawing.Point(22, 76);
+            this.txtPowerON_Delay.Name = "txtPowerON_Delay";
+            this.txtPowerON_Delay.Size = new System.Drawing.Size(120, 48);
+            this.txtPowerON_Delay.TabIndex = 0;
+            this.txtPowerON_Delay.Text = "0.00";
+            this.txtPowerON_Delay.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtPowerON_Delay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPowerON_Delay_KeyPress);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(194)))), ((int)(((byte)(141)))));
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.txtCurrentLevel);
+            this.groupBox3.Controls.Add(this.txtOCP);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(303, 41);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(263, 243);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Current";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(160, 184);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 32);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "A";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(160, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 32);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "A";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(22, 144);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 29);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Current Level";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(22, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 29);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "OCP";
+            // 
+            // txtCurrentLevel
+            // 
+            this.txtCurrentLevel.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtCurrentLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentLevel.ForeColor = System.Drawing.Color.Lime;
+            this.txtCurrentLevel.Location = new System.Drawing.Point(22, 176);
+            this.txtCurrentLevel.Name = "txtCurrentLevel";
+            this.txtCurrentLevel.Size = new System.Drawing.Size(132, 48);
+            this.txtCurrentLevel.TabIndex = 2;
+            this.txtCurrentLevel.Text = "2.000";
+            this.txtCurrentLevel.TextChanged += new System.EventHandler(this.txtCurrentLevel_TextChanged);
+            this.txtCurrentLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrentLevel_KeyPress);
+            // 
+            // txtOCP
+            // 
+            this.txtOCP.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtOCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOCP.ForeColor = System.Drawing.Color.Lime;
+            this.txtOCP.Location = new System.Drawing.Point(22, 76);
+            this.txtOCP.Name = "txtOCP";
+            this.txtOCP.Size = new System.Drawing.Size(132, 48);
+            this.txtOCP.TabIndex = 0;
+            this.txtOCP.Text = "10.000";
+            this.txtOCP.TextChanged += new System.EventHandler(this.txtOCP_TextChanged);
+            this.txtOCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOCP_KeyPress);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(133)))));
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtVoltageLevel);
+            this.groupBox2.Controls.Add(this.txtOVP);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(34, 41);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(263, 243);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Voltage";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(160, 184);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 32);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "V";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(160, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 32);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "V";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(22, 144);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(159, 29);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Voltage Level";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 29);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "OVP";
+            // 
+            // txtVoltageLevel
+            // 
+            this.txtVoltageLevel.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtVoltageLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVoltageLevel.ForeColor = System.Drawing.Color.Lime;
+            this.txtVoltageLevel.Location = new System.Drawing.Point(22, 176);
+            this.txtVoltageLevel.Name = "txtVoltageLevel";
+            this.txtVoltageLevel.Size = new System.Drawing.Size(132, 48);
+            this.txtVoltageLevel.TabIndex = 2;
+            this.txtVoltageLevel.Text = "12.000";
+            this.txtVoltageLevel.TextChanged += new System.EventHandler(this.txtVoltageLevel_TextChanged);
+            this.txtVoltageLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVoltageLevel_KeyPress);
+            // 
+            // txtOVP
+            // 
+            this.txtOVP.BackColor = System.Drawing.SystemColors.InfoText;
+            this.txtOVP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOVP.ForeColor = System.Drawing.Color.Lime;
+            this.txtOVP.Location = new System.Drawing.Point(22, 76);
+            this.txtOVP.Name = "txtOVP";
+            this.txtOVP.Size = new System.Drawing.Size(132, 48);
+            this.txtOVP.TabIndex = 0;
+            this.txtOVP.Text = "25.000";
+            this.txtOVP.TextChanged += new System.EventHandler(this.txtOVP_TextChanged);
+            this.txtOVP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOVP_KeyPress);
             // 
             // tabPage1
             // 
@@ -498,363 +878,9 @@
             this.rdAbort.UseVisualStyleBackColor = true;
             this.rdAbort.CheckedChanged += new System.EventHandler(this.rdAbort_CheckedChanged);
             // 
-            // tabPage2
+            // tmrStatus
             // 
-            this.tabPage2.Controls.Add(this.label17);
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.btnPowerOut);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1250, 604);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1041, 246);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(166, 29);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Output Enable";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(133)))), ((int)(((byte)(255)))));
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.textBox3);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(34, 290);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(532, 151);
-            this.groupBox5.TabIndex = 5;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Actual Output";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(433, 80);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(35, 32);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "A";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(148, 86);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(35, 32);
-            this.label14.TabIndex = 4;
-            this.label14.Text = "V";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(307, 38);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(92, 29);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Current";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(22, 41);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 29);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Voltage";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Lime;
-            this.textBox3.Location = new System.Drawing.Point(307, 70);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 48);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "0.000";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InfoText;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Lime;
-            this.textBox4.Location = new System.Drawing.Point(22, 76);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(120, 48);
-            this.textBox4.TabIndex = 0;
-            this.textBox4.Text = "0.000";
-            // 
-            // btnPowerOut
-            // 
-            this.btnPowerOut.AutoSize = true;
-            this.btnPowerOut.BackColor = System.Drawing.Color.Transparent;
-            this.btnPowerOut.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.PowerOFF80;
-            this.btnPowerOut.Location = new System.Drawing.Point(1055, 117);
-            this.btnPowerOut.Name = "btnPowerOut";
-            this.btnPowerOut.Size = new System.Drawing.Size(129, 108);
-            this.btnPowerOut.TabIndex = 4;
-            this.btnPowerOut.UseVisualStyleBackColor = false;
-            this.btnPowerOut.Click += new System.EventHandler(this.btnPowerOut_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(145)))));
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.txtPowerOFF_Delay);
-            this.groupBox4.Controls.Add(this.txtPowerON_Delay);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(572, 41);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(410, 243);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Power ON/OFF Delay (s)";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(148, 184);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(118, 32);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Second";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(146, 84);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(118, 32);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Second";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 144);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 29);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Power OFF";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(22, 41);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(126, 29);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Power ON";
-            // 
-            // txtPowerOFF_Delay
-            // 
-            this.txtPowerOFF_Delay.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtPowerOFF_Delay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPowerOFF_Delay.ForeColor = System.Drawing.Color.Lime;
-            this.txtPowerOFF_Delay.Location = new System.Drawing.Point(22, 176);
-            this.txtPowerOFF_Delay.Name = "txtPowerOFF_Delay";
-            this.txtPowerOFF_Delay.Size = new System.Drawing.Size(120, 48);
-            this.txtPowerOFF_Delay.TabIndex = 2;
-            this.txtPowerOFF_Delay.Text = "0.00";
-            this.txtPowerOFF_Delay.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.txtPowerOFF_Delay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPowerOFF_Delay_KeyPress);
-            // 
-            // txtPowerON_Delay
-            // 
-            this.txtPowerON_Delay.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtPowerON_Delay.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPowerON_Delay.ForeColor = System.Drawing.Color.Lime;
-            this.txtPowerON_Delay.Location = new System.Drawing.Point(22, 76);
-            this.txtPowerON_Delay.Name = "txtPowerON_Delay";
-            this.txtPowerON_Delay.Size = new System.Drawing.Size(120, 48);
-            this.txtPowerON_Delay.TabIndex = 0;
-            this.txtPowerON_Delay.Text = "0.00";
-            this.txtPowerON_Delay.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.txtPowerON_Delay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPowerON_Delay_KeyPress);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(194)))), ((int)(((byte)(141)))));
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtCurrentLevel);
-            this.groupBox3.Controls.Add(this.txtOCP);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(303, 41);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(263, 243);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Current";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(148, 184);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 32);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "A";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(148, 84);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 32);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "A";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 144);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 29);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Current Level";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 41);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 29);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "OCP";
-            // 
-            // txtCurrentLevel
-            // 
-            this.txtCurrentLevel.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtCurrentLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentLevel.ForeColor = System.Drawing.Color.Lime;
-            this.txtCurrentLevel.Location = new System.Drawing.Point(22, 176);
-            this.txtCurrentLevel.Name = "txtCurrentLevel";
-            this.txtCurrentLevel.Size = new System.Drawing.Size(120, 48);
-            this.txtCurrentLevel.TabIndex = 2;
-            this.txtCurrentLevel.Text = "31.000";
-            this.txtCurrentLevel.TextChanged += new System.EventHandler(this.txtCurrentLevel_TextChanged);
-            this.txtCurrentLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCurrentLevel_KeyPress);
-            // 
-            // txtOCP
-            // 
-            this.txtOCP.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtOCP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOCP.ForeColor = System.Drawing.Color.Lime;
-            this.txtOCP.Location = new System.Drawing.Point(22, 76);
-            this.txtOCP.Name = "txtOCP";
-            this.txtOCP.Size = new System.Drawing.Size(120, 48);
-            this.txtOCP.TabIndex = 0;
-            this.txtOCP.Text = "10.000";
-            this.txtOCP.TextChanged += new System.EventHandler(this.txtOCP_TextChanged);
-            this.txtOCP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOCP_KeyPress);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(133)))));
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.txtVoltageLevel);
-            this.groupBox2.Controls.Add(this.txtOVP);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(34, 41);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(263, 243);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Voltage";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(148, 186);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 32);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "V";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(148, 86);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 32);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "V";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 144);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 29);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Voltage Level";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "OVP";
-            // 
-            // txtVoltageLevel
-            // 
-            this.txtVoltageLevel.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtVoltageLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVoltageLevel.ForeColor = System.Drawing.Color.Lime;
-            this.txtVoltageLevel.Location = new System.Drawing.Point(22, 176);
-            this.txtVoltageLevel.Name = "txtVoltageLevel";
-            this.txtVoltageLevel.Size = new System.Drawing.Size(120, 48);
-            this.txtVoltageLevel.TabIndex = 2;
-            this.txtVoltageLevel.Text = "12.000";
-            this.txtVoltageLevel.TextChanged += new System.EventHandler(this.txtVoltageLevel_TextChanged);
-            this.txtVoltageLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVoltageLevel_KeyPress);
-            // 
-            // txtOVP
-            // 
-            this.txtOVP.BackColor = System.Drawing.SystemColors.InfoText;
-            this.txtOVP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOVP.ForeColor = System.Drawing.Color.Lime;
-            this.txtOVP.Location = new System.Drawing.Point(22, 76);
-            this.txtOVP.Name = "txtOVP";
-            this.txtOVP.Size = new System.Drawing.Size(120, 48);
-            this.txtOVP.TabIndex = 0;
-            this.txtOVP.Text = "25.000";
-            this.txtOVP.TextChanged += new System.EventHandler(this.txtOVP_TextChanged);
-            this.txtOVP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOVP_KeyPress);
+            this.tmrStatus.Tick += new System.EventHandler(this.tmrStatus_Tick);
             // 
             // frmMain
             // 
@@ -876,10 +902,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -890,6 +912,10 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -961,9 +987,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtReadCurOut;
+        private System.Windows.Forms.TextBox txtReadVolOut;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Timer tmrStatus;
+        private System.Windows.Forms.ToolStripButton tsbtnTxtinfo_En_Dis;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 
