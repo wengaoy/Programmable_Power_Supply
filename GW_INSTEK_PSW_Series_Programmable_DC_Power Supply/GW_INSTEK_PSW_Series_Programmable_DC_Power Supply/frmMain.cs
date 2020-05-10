@@ -60,16 +60,13 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 if (this.txtinfo.InvokeRequired)
                 {
                     SetTextCallback d = new SetTextCallback(SetText);
-                    //if (txtinfo.Lines.Count() > 10)
-                    //{
-                    //    txtinfo.Clear();
-                    //}
+                  
                     this.BeginInvoke(d, new object[] { text });         //BeginInvoke REPLACED Invoke to fixed freeze when close the port
 
                 }
                 else
                 {
-                    if (txtinfo.Lines.Count() > 500)
+                    if (txtinfo.Lines.Count() > 5000)
                     {
                         txtinfo.Clear();
                     }
@@ -325,6 +322,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
         private void button2_Click(object sender, EventArgs e)
         {
             string msg =txtCmd.Text + "\r\n";
+            txtinfo.AppendText("Sending: " + msg);
             if (portOpened)
             {
                 COMmsgToWrite.Add(msg);
@@ -333,7 +331,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             {
                 MessageBox.Show("Port not opened!");
             }
-            txtinfo.AppendText("\r\n");
+          
         }
 
         private void tsBtnExit_Click(object sender, EventArgs e)
@@ -405,7 +403,7 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                         lst2rdStr.Items.Add("?");//Query
                         break;
                     case 5://OUTPut:PROTection:CLEar
-                        lst2rdStr.Items.Add(" CLEar");//clears over-voltage, over-current and overtemperature (OVP, OCP, OTP) protection circuits.
+                       //don't need this
                         break;
                     case 6://OUTPut:PROTection:TRIPped
                         lst2rdStr.Items.Add("?");//Query only
@@ -1063,8 +1061,8 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 PowerONF = false;
                 txtinfo.Clear();
                 txtinfo.AppendText("Power Off!\r\n");
-
                 tmrStatus.Stop();
+                txtinfoBoxF = true;
             }
             else//Turn ON
             {
@@ -1097,32 +1095,49 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
         {
            
             OVP_voltage =Convert.ToDouble(txtOVP.Text);
+            Properties.Settings.Default.OVP_voltagePreset = OVP_voltage;
+            Properties.Settings.Default.Save();
         }
 
         private void txtVoltageLevel_TextChanged(object sender, EventArgs e)
         {
             VoltageOut = Convert.ToDouble(txtVoltageLevel.Text);
+            Properties.Settings.Default.VoltageOutPreset = VoltageOut;
+            Properties.Settings.Default.Save();
         }
 
         private void txtOCP_TextChanged(object sender, EventArgs e)
         {
+            //min current > 5A for PSW 30-108
             OCP_current = Convert.ToDouble(txtOCP.Text);
+            if(OCP_current<5)
+            {
+                MessageBox.Show("For PSW 30-108 Min OCP voltage is 5V!");
+                OCP_current = 5;
+            }
+            Properties.Settings.Default.OCP_currentPreset = OCP_current;
+            Properties.Settings.Default.Save();
         }
 
         private void txtCurrentLevel_TextChanged(object sender, EventArgs e)
         {
             CurrentOut = Convert.ToDouble(txtCurrentLevel.Text);
+            Properties.Settings.Default.CurrentOutPreset = CurrentOut;
+            Properties.Settings.Default.Save();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             PowerON_delay = Convert.ToDouble(txtPowerON_Delay.Text);
-
+            Properties.Settings.Default.PowerONdelayPreset = PowerON_delay;
+            Properties.Settings.Default.Save();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             PowerOFF_delay = Convert.ToDouble(txtPowerOFF_Delay.Text);
+            Properties.Settings.Default.PowerOFFdelayPreset = PowerOFF_delay;
+            Properties.Settings.Default.Save();
         }
 
 
@@ -1215,24 +1230,85 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 e.Handled = true;
             }
         }
+        private Int16 ConditionStatusRegister;//0~32767, 0x7FFF see page 95
 
+        private void process_protection(Int16 register)
+        {
+            pbox_OVP.Image = Properties.Resources.grayBall32;
+            pbox_OCP.Image = Properties.Resources.grayBall32;
+            pbox_OTP.Image = Properties.Resources.grayBall32;
+            pbox_ShutdownTrip.Image = Properties.Resources.grayBall32;
+            pbox_AC_Power_OFF.Image = Properties.Resources.grayBall32;
+
+
+            if ((register >> 0 & 0x01) == 1)//OVP
+            {
+                pbox_OVP.Image = Properties.Resources.yellowBall32;
+                Debug.WriteLine("OVP");
+            }
+            else if((register>>1 & 0x01)==1)//OCP
+            {
+                pbox_OCP.Image = Properties.Resources.yellowBall32;
+                Debug.WriteLine("OCP");
+            }
+            else if ((register >> 3 & 0x01) == 1)//Power AC OFF
+            {
+                pbox_AC_Power_OFF.Image = Properties.Resources.yellowBall32;
+                Debug.WriteLine("Power AC OFF");
+            }
+            else if ((register >> 4 & 0x01) == 1)//OTP
+            {
+                pbox_OTP.Image = Properties.Resources.yellowBall32;
+                Debug.WriteLine("OTP");
+            }
+        }
         private void tmrStatus_Tick(object sender, EventArgs e)
         {
             COMmsgToWrite.Add("MEASure:SCALar:VOLTage:DC?\r\n");
             COMmsgToWrite.Add("MEASure:SCALar:CURRent:DC?\r\n");
-           
+            // COMmsgToWrite.Add("OUTPut:PROTection:TRIPped?\r\n");// this just any protection triggered, include OVP,OCP,OTP etc.
+            COMmsgToWrite.Add("STATus:QUEStionable:CONDition?\r\n");//this is a questionable register included each protection status
+                                                                    //see  page 96 for detail
+        
+          //  COMmsgToWrite.Add("*IDN?");
+
+
+
             Thread.Sleep(100);
-           
-            String[] spearator = {"|"};
-            String[] StatusList = mCaptureSB.ToString().Split(spearator, 2, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                String[] spearator = { "|" };
+                String[] StatusList = mCaptureSB.ToString().Split(spearator, 3, StringSplitOptions.RemoveEmptyEntries);
 
-            txtReadVolOut.Text = StatusList[0];//for actual Voltage output
+                txtReadVolOut.Text = StatusList[0];//for actual Voltage output               
+                txtReadCurOut.Text = StatusList[1];//for actual Current output
 
-            char[] charsToTrim = {'|'};                 
-            txtReadCurOut.Text = StatusList[1].Trim(charsToTrim);//for actual Current output
-              
-            Debug.WriteLine(mCaptureSB.Length);
-            mCaptureSB.Clear();
+
+                char[] charsToTrim = { '|', '\n' };
+                ConditionStatusRegister = Convert.ToInt16(StatusList[2].Trim(charsToTrim));
+                process_protection(ConditionStatusRegister);
+                //if(StatusList[2].Trim(charsToTrim) == "1")//OVP tripped
+                //{
+
+                //    //pbox_OVP.Image = Properties.Resources.yellowBall32;
+                //    //Debug.WriteLine("OVP detected!");
+                //}
+                //else
+                //{
+                //    pbox_OVP.Image = Properties.Resources.grayBall32;
+                //}
+
+                Debug.WriteLine(StatusList[2].Trim(charsToTrim));
+                Debug.WriteLine(mCaptureSB.Length);
+                mCaptureSB.Clear();
+               
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Power may lost..." + ex.Message);
+                tmrStatus.Stop();
+            }
+          
         }
 
         private void tsbtnTxtinfo_En_Dis_Click(object sender, EventArgs e)
@@ -1247,6 +1323,17 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
                 txtinfoBoxF = true;
                 tsbtnTxtinfo_En_Dis.Image = Properties.Resources.informatics48on;
             }
+        }
+
+        private void btnClearProtection_Click(object sender, EventArgs e)
+        {
+            //
+            COMmsgToWrite.Add("OUTPut:PROTection:CLEar\r\n");
+        }
+
+        private void cboBaudRate_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -1277,7 +1364,26 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply
             cboBaudRate.SelectedIndex = 9;
             txtinfoBoxF = true; //use txtinfo box show incoming COM port message
 
-           
+            //for PSU GUI textbox preset
+            OVP_voltage = Properties.Settings.Default.OVP_voltagePreset;
+            txtOVP.Text = OVP_voltage.ToString("0.000");//force to display zero
+
+            VoltageOut = Properties.Settings.Default.VoltageOutPreset;
+            txtVoltageLevel.Text = VoltageOut.ToString("0.000");
+
+            OCP_current = Properties.Settings.Default.OCP_currentPreset;
+            txtOCP.Text = OCP_current.ToString("0.000");
+
+            CurrentOut = Properties.Settings.Default.CurrentOutPreset;
+            txtCurrentLevel.Text = CurrentOut.ToString("0.000");
+
+            PowerON_delay = Properties.Settings.Default.PowerONdelayPreset;
+            txtPowerON_Delay.Text = PowerON_delay.ToString("0.000");
+
+            PowerOFF_delay = Properties.Settings.Default.PowerOFFdelayPreset;
+            txtPowerOFF_Delay.Text = PowerOFF_delay.ToString("0.000");
+
+
         }
     }
 }

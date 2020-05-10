@@ -90,6 +90,12 @@
     <Content Include="Resources\exit48.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\yellowBall32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\grayBall32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\icons8lightningbolt48.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

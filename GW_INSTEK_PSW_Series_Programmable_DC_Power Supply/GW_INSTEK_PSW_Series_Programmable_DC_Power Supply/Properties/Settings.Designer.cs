@@ -34,5 +34,77 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
                 this["SerialPort_Sel_Idx"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("26")]
+        public double OVP_voltagePreset {
+            get {
+                return ((double)(this["OVP_voltagePreset"]));
+            }
+            set {
+                this["OVP_voltagePreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        public double VoltageOutPreset {
+            get {
+                return ((double)(this["VoltageOutPreset"]));
+            }
+            set {
+                this["VoltageOutPreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public double OCP_currentPreset {
+            get {
+                return ((double)(this["OCP_currentPreset"]));
+            }
+            set {
+                this["OCP_currentPreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public double CurrentOutPreset {
+            get {
+                return ((double)(this["CurrentOutPreset"]));
+            }
+            set {
+                this["CurrentOutPreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double PowerONdelayPreset {
+            get {
+                return ((double)(this["PowerONdelayPreset"]));
+            }
+            set {
+                this["PowerONdelayPreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double PowerOFFdelayPreset {
+            get {
+                return ((double)(this["PowerOFFdelayPreset"]));
+            }
+            set {
+                this["PowerOFFdelayPreset"] = value;
+            }
+        }
     }
 }

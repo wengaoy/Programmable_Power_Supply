@@ -103,6 +103,16 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap grayBall32 {
+            get {
+                object obj = ResourceManager.GetObject("grayBall32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8lightningbolt48 {
             get {
                 object obj = ResourceManager.GetObject("icons8lightningbolt48", resourceCulture);
@@ -206,6 +216,16 @@ namespace GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties {
         internal static System.Drawing.Bitmap toggleOn80 {
             get {
                 object obj = ResourceManager.GetObject("toggleOn80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap yellowBall32 {
+            get {
+                object obj = ResourceManager.GetObject("yellowBall32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

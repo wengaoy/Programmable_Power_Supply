@@ -48,6 +48,18 @@
             this.txtinfo = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnClearProtection = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.pbox_AC_Power_OFF = new System.Windows.Forms.PictureBox();
+            this.pbox_ShutdownTrip = new System.Windows.Forms.PictureBox();
+            this.pbox_OTP = new System.Windows.Forms.PictureBox();
+            this.pbox_OCP = new System.Windows.Forms.PictureBox();
+            this.pbox_OVP = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -104,6 +116,12 @@
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_AC_Power_OFF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_ShutdownTrip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OTP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OCP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OVP)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -179,6 +197,7 @@
             "1000000"});
             this.cboBaudRate.Name = "cboBaudRate";
             this.cboBaudRate.Size = new System.Drawing.Size(121, 57);
+            this.cboBaudRate.Click += new System.EventHandler(this.cboBaudRate_Click);
             // 
             // toolStripSeparator3
             // 
@@ -283,6 +302,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Silver;
+            this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.btnPowerOut);
@@ -296,11 +316,148 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "PSW 30-180 GUI";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.groupBox6.Controls.Add(this.btnClearProtection);
+            this.groupBox6.Controls.Add(this.label22);
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.label21);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Controls.Add(this.pbox_AC_Power_OFF);
+            this.groupBox6.Controls.Add(this.pbox_ShutdownTrip);
+            this.groupBox6.Controls.Add(this.pbox_OTP);
+            this.groupBox6.Controls.Add(this.pbox_OCP);
+            this.groupBox6.Controls.Add(this.pbox_OVP);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(546, 255);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(410, 331);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Protection Tripped";
+            // 
+            // btnClearProtection
+            // 
+            this.btnClearProtection.Location = new System.Drawing.Point(22, 258);
+            this.btnClearProtection.Name = "btnClearProtection";
+            this.btnClearProtection.Size = new System.Drawing.Size(280, 52);
+            this.btnClearProtection.TabIndex = 17;
+            this.btnClearProtection.Text = "Protection Clear";
+            this.btnClearProtection.UseVisualStyleBackColor = true;
+            this.btnClearProtection.Click += new System.EventHandler(this.btnClearProtection_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label22.Location = new System.Drawing.Point(75, 202);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(170, 29);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "AC Power Off";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label20.Location = new System.Drawing.Point(75, 164);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(228, 29);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "Shutdown Tripped";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label19.Location = new System.Drawing.Point(75, 88);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(168, 29);
+            this.label19.TabIndex = 13;
+            this.label19.Text = "OCP Tripped";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label21.Location = new System.Drawing.Point(75, 126);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(167, 29);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "OTP Tripped";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label18.Location = new System.Drawing.Point(75, 50);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(166, 29);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "OVP Tripped";
+            // 
+            // pbox_AC_Power_OFF
+            // 
+            this.pbox_AC_Power_OFF.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.grayBall32;
+            this.pbox_AC_Power_OFF.Location = new System.Drawing.Point(23, 200);
+            this.pbox_AC_Power_OFF.Name = "pbox_AC_Power_OFF";
+            this.pbox_AC_Power_OFF.Size = new System.Drawing.Size(32, 32);
+            this.pbox_AC_Power_OFF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbox_AC_Power_OFF.TabIndex = 11;
+            this.pbox_AC_Power_OFF.TabStop = false;
+            // 
+            // pbox_ShutdownTrip
+            // 
+            this.pbox_ShutdownTrip.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.grayBall32;
+            this.pbox_ShutdownTrip.Location = new System.Drawing.Point(23, 162);
+            this.pbox_ShutdownTrip.Name = "pbox_ShutdownTrip";
+            this.pbox_ShutdownTrip.Size = new System.Drawing.Size(32, 32);
+            this.pbox_ShutdownTrip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbox_ShutdownTrip.TabIndex = 10;
+            this.pbox_ShutdownTrip.TabStop = false;
+            // 
+            // pbox_OTP
+            // 
+            this.pbox_OTP.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.grayBall32;
+            this.pbox_OTP.Location = new System.Drawing.Point(23, 124);
+            this.pbox_OTP.Name = "pbox_OTP";
+            this.pbox_OTP.Size = new System.Drawing.Size(32, 32);
+            this.pbox_OTP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbox_OTP.TabIndex = 9;
+            this.pbox_OTP.TabStop = false;
+            // 
+            // pbox_OCP
+            // 
+            this.pbox_OCP.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.grayBall32;
+            this.pbox_OCP.Location = new System.Drawing.Point(23, 86);
+            this.pbox_OCP.Name = "pbox_OCP";
+            this.pbox_OCP.Size = new System.Drawing.Size(32, 32);
+            this.pbox_OCP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbox_OCP.TabIndex = 8;
+            this.pbox_OCP.TabStop = false;
+            // 
+            // pbox_OVP
+            // 
+            this.pbox_OVP.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.grayBall32;
+            this.pbox_OVP.Location = new System.Drawing.Point(23, 48);
+            this.pbox_OVP.Name = "pbox_OVP";
+            this.pbox_OVP.Size = new System.Drawing.Size(32, 32);
+            this.pbox_OVP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbox_OVP.TabIndex = 0;
+            this.pbox_OVP.TabStop = false;
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1039, 225);
+            this.label17.Location = new System.Drawing.Point(1013, 190);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(166, 29);
             this.label17.TabIndex = 6;
@@ -308,7 +465,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(133)))), ((int)(((byte)(255)))));
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(179)))), ((int)(((byte)(255)))));
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label15);
@@ -316,7 +473,7 @@
             this.groupBox5.Controls.Add(this.txtReadCurOut);
             this.groupBox5.Controls.Add(this.txtReadVolOut);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(34, 290);
+            this.groupBox5.Location = new System.Drawing.Point(8, 255);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(532, 151);
             this.groupBox5.TabIndex = 5;
@@ -388,7 +545,7 @@
             this.btnPowerOut.AutoSize = true;
             this.btnPowerOut.BackColor = System.Drawing.Color.Transparent;
             this.btnPowerOut.Image = global::GW_INSTEK_PSW_Series_Programmable_DC_Power_Supply.Properties.Resources.PowerOFF80;
-            this.btnPowerOut.Location = new System.Drawing.Point(1060, 91);
+            this.btnPowerOut.Location = new System.Drawing.Point(1034, 56);
             this.btnPowerOut.Name = "btnPowerOut";
             this.btnPowerOut.Size = new System.Drawing.Size(129, 108);
             this.btnPowerOut.TabIndex = 4;
@@ -397,7 +554,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(167)))), ((int)(((byte)(145)))));
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(238)))), ((int)(((byte)(107)))));
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label5);
@@ -405,7 +562,7 @@
             this.groupBox4.Controls.Add(this.txtPowerOFF_Delay);
             this.groupBox4.Controls.Add(this.txtPowerON_Delay);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(572, 41);
+            this.groupBox4.Location = new System.Drawing.Point(546, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(410, 243);
             this.groupBox4.TabIndex = 3;
@@ -478,7 +635,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(194)))), ((int)(((byte)(141)))));
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(153)))), ((int)(((byte)(125)))));
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.label3);
@@ -486,7 +643,7 @@
             this.groupBox3.Controls.Add(this.txtCurrentLevel);
             this.groupBox3.Controls.Add(this.txtOCP);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(303, 41);
+            this.groupBox3.Location = new System.Drawing.Point(277, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(263, 243);
             this.groupBox3.TabIndex = 2;
@@ -559,7 +716,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(234)))), ((int)(((byte)(133)))));
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(204)))), ((int)(((byte)(65)))));
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label2);
@@ -567,7 +724,7 @@
             this.groupBox2.Controls.Add(this.txtVoltageLevel);
             this.groupBox2.Controls.Add(this.txtOVP);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(34, 41);
+            this.groupBox2.Location = new System.Drawing.Point(8, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(263, 243);
             this.groupBox2.TabIndex = 1;
@@ -904,6 +1061,13 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_AC_Power_OFF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_ShutdownTrip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OTP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OCP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_OVP)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -993,6 +1157,18 @@
         private System.Windows.Forms.Timer tmrStatus;
         private System.Windows.Forms.ToolStripButton tsbtnTxtinfo_En_Dis;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox pbox_OVP;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox pbox_AC_Power_OFF;
+        private System.Windows.Forms.PictureBox pbox_ShutdownTrip;
+        private System.Windows.Forms.PictureBox pbox_OTP;
+        private System.Windows.Forms.PictureBox pbox_OCP;
+        private System.Windows.Forms.Button btnClearProtection;
     }
 }
 
