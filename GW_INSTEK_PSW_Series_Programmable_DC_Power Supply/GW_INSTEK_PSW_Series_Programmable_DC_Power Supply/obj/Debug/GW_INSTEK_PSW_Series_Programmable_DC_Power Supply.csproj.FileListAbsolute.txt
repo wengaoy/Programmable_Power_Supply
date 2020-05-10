@@ -59,3 +59,5 @@ C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Powe
 C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\bin\Debug\Resources\informatics48on.png
 C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\bin\Debug\Resources\yellowBall32.png
 C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\bin\Debug\Resources\grayBall32.png
+C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\bin\Debug\images\screenShot1.png
+C:\git_files\Programmable-Power-Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\GW_INSTEK_PSW_Series_Programmable_DC_Power Supply\bin\Debug\images\screenShot2.png
