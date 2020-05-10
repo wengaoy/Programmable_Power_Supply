@@ -5,3 +5,5 @@
 <img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/screenShot1.png">
 
 <img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/screenShot2.png">
+
+<img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/cameraShot1.jpg">
