@@ -7,3 +7,7 @@
 <img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/screenShot2.png">
 
 <img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/cameraShot1.jpg">
+
+This software is tested with GW INSTEK PSW 30-108, but it should works with ohter similar products
+
+<img src="GW_INSTEK_PSW_Series_Programmable_DC_Power%20Supply/images/psw_PSU_FB.png">
